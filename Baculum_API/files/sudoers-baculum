@@ -1,0 +1,6 @@
+Defaults:www-data !requiretty
+www-data  ALL=NOPASSWD:  /opt/bacula/bin/bconsole
+www-data  ALL=NOPASSWD:  /opt/bacula/bin/bdirjson
+www-data  ALL=NOPASSWD:  /opt/bacula/bin/bsdjson
+www-data  ALL=NOPASSWD:  /opt/bacula/bin/bfdjson
+www-data  ALL=NOPASSWD:  /opt/bacula/bin/bbconsjson
