@@ -1,4 +1,6 @@
-FROM ixxoid/bacula-common-ce:11.0.5
+FROM ixxoid/bacula-common-ce:11.0.5-1
+
+LABEL maintainer="ixxoid@bluewin.ch"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
