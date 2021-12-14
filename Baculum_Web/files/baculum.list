@@ -1,2 +1,2 @@
-deb http://www.bacula.org/downloads/baculum/stable-11/debian buster main
-deb-src http://www.bacula.org/downloads/baculum/stable-11/debian buster main
+deb http://www.bacula.org/downloads/baculum/stable-11/debian bullseye main
+deb-src http://www.bacula.org/downloads/baculum/stable-11/debian bullseye main
