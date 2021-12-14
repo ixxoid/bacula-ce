@@ -1,6 +1,8 @@
-FROM ixxoid/bacula-common-ce:11.0.5 AS common
+FROM ixxoid/bacula-common-ce:11.0.5-1 AS common
 
-FROM postgres:11-buster
+LABEL maintainer="ixxoid@bluewin.ch"
+
+FROM postgres:13-bullseye
 
 ENV POSTGRES_INITDB_ARGS '--encoding=SQL_ASCII --lc-collate=C --lc-ctype=C'
 
