@@ -1,11 +1,26 @@
 ## Description
 
-This is the Bacula Community Edition deployed on the official Debian Buster Docker image. The Bacula Catalog image is using the official Postgresql 11 Docker image.
+This is the Bacula Community Edition deployed on the official Debian Bullseye Docker image. The Bacula Catalog image is using the official Postgresql 13 Docker image.
 The timezone in the containers is inherited from the local time zone on the docker host.
 
 **Requirements**
 
 You need a x86-64 based Linux host system with installed docker engine and docker-compose.
+
+**Upgrade from version 11.0.5 to 11.0.5-1**
+
+In the version 11.0.5-1 the Debian distribution in the image has changed from Buster to Bullseye.
+The Debian Bullseye distribution brings the database postgresql in version 13 instead of version 11 in Buster.
+To migrate the database you need to create a dump of the existing DB with the following command:
+
+`docker exec -t docker_bacula_compose_db_1 pg_dumpall -c -U bacula > db_dump.sql`
+
+After this step, replace the docker-compose.yaml with the new version.
+Then follow the steps described below.
+When you have the new version up and running, import the dump of the postgresql dump with the following command:
+`cat db_dump.sql | docker exec -i bacula-ce_db_1 psql -U bacula`
+
+In case you didn't use version 11.0.5, you can ignore this section
 
 **Download the Docker images**
 
