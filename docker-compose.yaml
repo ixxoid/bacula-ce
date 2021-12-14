@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   db:
-    image: ixxoid/bacula-catalog-ce:11.0.5          
+    image: ixxoid/bacula-catalog-ce:11.0.5-1          
     restart: unless-stopped
 
     restart: always
@@ -15,12 +15,12 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - pgdata:/var/lib/postgresql/data:rw
+      - pgdata_13:/var/lib/postgresql/data:rw
       - bcworking:/opt/bacula/working:rw
 
 
   bacula-dir:
-    image: ixxoid/bacula-director-ce:11.0.5
+    image: ixxoid/bacula-director-ce:11.0.5-1
     restart: unless-stopped
     volumes:
       - ./etc:/opt/bacula/etc:ro
@@ -34,7 +34,7 @@ services:
 
 
   bacula-sd:
-    image: ixxoid/bacula-storage-ce:11.0.5
+    image: ixxoid/bacula-storage-ce:11.0.5-1
     restart: unless-stopped
     depends_on:
       - bacula-dir
@@ -50,7 +50,7 @@ services:
 
 
   bacula-fd:
-    image: ixxoid/bacula-client-ce:11.0.5
+    image: ixxoid/bacula-client-ce:11.0.5-1
     restart: unless-stopped
     depends_on:
       - bacula-sd
@@ -66,7 +66,7 @@ services:
 
 
   baculum-api:
-    image: ixxoid/baculum-api-ce:11.0.5
+    image: ixxoid/baculum-api-ce:11.0.5-1
     restart: unless-stopped
     depends_on:
       - db
@@ -75,12 +75,13 @@ services:
       - ./etc:/opt/bacula/etc:rw
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - ./Baculum_API/files/api.conf:/usr/share/baculum/htdocs/protected/API/Config/api.conf:rw
     ports:
       - 9096:9096
 
 
   baculum-web:
-    image: ixxoid/baculum-web-ce:11.0.5
+    image: ixxoid/baculum-web-ce:11.0.5-1
     restart: unless-stopped
     depends_on:
       - db
@@ -90,9 +91,12 @@ services:
       - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - bwebconfig:/usr/share/baculum/htdocs/protected/Web/Config:rw
     ports:
       - 9095:9095
 
 volumes: 
-  pgdata:
+  pgdata_13:
   bcworking:
+  bwebconfig:
+
