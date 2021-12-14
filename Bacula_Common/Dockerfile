@@ -1,4 +1,6 @@
-FROM debian:buster
+FROM debian:bullseye
+
+LABEL maintainer="ixxoid@bluewin.ch"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -24,8 +26,7 @@ RUN apt-get -y install \
 		bacula-common \
 		bacula-console \
 		bacula-client \
-		bacula-aligned \
-		bacula-cloud-storage
+		bacula-aligned
 
 RUN for i in `ls /opt/bacula/bin`; do ln -s /opt/bacula/bin/$i /usr/sbin/$i; done 
 
