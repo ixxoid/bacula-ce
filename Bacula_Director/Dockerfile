@@ -1,4 +1,4 @@
-FROM ixxoid/bacula-common-ce:11.0.5-1
+FROM ixxoid/bacula-common-ce:11.0.6
 
 LABEL maintainer="ixxoid@bluewin.ch"
 

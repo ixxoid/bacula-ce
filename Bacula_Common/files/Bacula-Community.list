@@ -1,2 +1,2 @@
 # Bacula Community
-deb http://www.bacula.org/packages/ACCESS_KEY/debs/11.0.5/buster/amd64/ buster main
+deb http://www.bacula.org/packages/ACCESS_KEY/debs/11.0.6/bullseye/amd64/ bullseye main
